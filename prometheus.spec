@@ -54,7 +54,7 @@ install -p -D -m 0644 \
 # install configuration
 install -p -D -m 0644 \
    prometheus.yml \
-   %{buildroot}%{_sysconfdir}/%{name}/%{name}.conf
+   %{buildroot}%{_sysconfdir}/%{name}/prometheus.yml
 cp -r consoles console_libraries \
    %{buildroot}%{_sysconfdir}/%{name}/
 
