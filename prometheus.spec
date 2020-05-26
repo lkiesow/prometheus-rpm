@@ -12,7 +12,7 @@ Release:       1%{?dist}
 License:       ASL 2.0
 
 Source0:       https://github.com/prometheus/prometheus/releases/download/v%{version}/prometheus-%{version}.linux-amd64.tar.gz
-Source1:       https://raw.githubusercontent.com/shaardie/ansible-roles/master/prometheus/files/prometheus.service
+Source1:       https://raw.githubusercontent.com/lkiesow/prometheus-rpm/master/prometheus.service
 URL:           https://prometheus.io/
 BuildRoot:     %{_tmppath}/%{name}-root
 
