@@ -100,6 +100,7 @@ fi
 %{_unitdir}/%{name}.service
 %attr(755,%{uid},%{gid}) %dir %{_sysconfdir}/%{name}
 %license LICENSE
+%doc NOTICE
 
 
 %changelog
