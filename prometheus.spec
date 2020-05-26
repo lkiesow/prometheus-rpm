@@ -8,7 +8,7 @@
 Name:          prometheus
 Summary:       Prometheus systems monitoring and alerting toolkit
 Version:       2.18.1
-Release:       3%{?dist}
+Release:       4%{?dist}
 License:       ASL 2.0
 
 Source0:       https://github.com/prometheus/prometheus/releases/download/v%{version}/prometheus-%{version}.linux-amd64.tar.gz
