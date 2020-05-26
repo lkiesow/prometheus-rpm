@@ -8,7 +8,7 @@
 Name:          prometheus
 Summary:       Prometheus systems monitoring and alerting toolkit
 Version:       2.18.1
-Release:       1%{?dist}
+Release:       2%{?dist}
 License:       ASL 2.0
 
 Source0:       https://github.com/prometheus/prometheus/releases/download/v%{version}/prometheus-%{version}.linux-amd64.tar.gz
@@ -98,7 +98,7 @@ fi
 %{_bindir}/*
 %config(noreplace) %{_sysconfdir}/%{name}
 %{_unitdir}/%{name}.service
-%attr(755,%{uid},%{gid}) %dir %{_sysconfdir}/%{name}
+%attr(755,%{uid},%{gid}) %dir %{_datadir}/%{name}
 %license LICENSE
 %doc NOTICE
 
