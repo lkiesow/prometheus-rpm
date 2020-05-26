@@ -8,7 +8,7 @@
 Name:          prometheus
 Summary:       Prometheus systems monitoring and alerting toolkit
 Version:       2.18.1
-Release:       2%{?dist}
+Release:       3%{?dist}
 License:       ASL 2.0
 
 Source0:       https://github.com/prometheus/prometheus/releases/download/v%{version}/prometheus-%{version}.linux-amd64.tar.gz
@@ -36,7 +36,7 @@ language, efficient time series database and modern alerting approach.
 rm -rf %{buildroot}
 
 install -p -d -m 0755 %{buildroot}%{_sysconfdir}/%{name}
-install -p -d -m 0755 %{buildroot}%{_datadir}/%{name}
+install -p -d -m 0755 %{buildroot}%{_sharedstatedir}/%{name}
 
 # Maybe for console templates?
 #install -p -d -m 0755 %{buildroot}%{_sharedstatedir}/%{name}
@@ -98,7 +98,7 @@ fi
 %{_bindir}/*
 %config(noreplace) %{_sysconfdir}/%{name}
 %{_unitdir}/%{name}.service
-%attr(755,%{uid},%{gid}) %dir %{_datadir}/%{name}
+%attr(755,%{uid},%{gid}) %dir %{_sharedstatedir}/%{name}
 %license LICENSE
 %doc NOTICE
 
