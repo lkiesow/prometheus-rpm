@@ -8,7 +8,7 @@
 Name:          prometheus
 Summary:       Prometheus systems monitoring and alerting toolkit
 Version:       2.21.0
-Release:       1%{?dist}
+Release:       2%{?dist}
 License:       ASL 2.0
 
 Source0:       https://github.com/prometheus/prometheus/releases/download/v%{version}/prometheus-%{version}.linux-amd64.tar.gz
@@ -44,7 +44,6 @@ install -p -d -m 0755 %{buildroot}%{_sharedstatedir}/%{name}
 # install binary
 install -p -D -m 0755 prometheus %{buildroot}%{_bindir}/prometheus
 install -p -D -m 0755 promtool %{buildroot}%{_bindir}/promtool
-install -p -D -m 0755 tsdb %{buildroot}%{_bindir}/tsdb
 
 # install unit file
 install -p -D -m 0644 \
@@ -104,6 +103,9 @@ fi
 
 
 %changelog
+* Mon Oct 12 2020 Lars Kiesow <lkiesow@uos.de> - 2.21.0-2
+- Removed tsdb binary
+
 * Mon Oct 12 2020 Lars Kiesow <lkiesow@uos.de> - 2.21.0-1
 - Update to 2.21.0
 
