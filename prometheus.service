@@ -3,13 +3,15 @@ Description=Prometheus
 After=network-online.target
 
 [Service]
+EnvironmentFile=/etc/default/prometheus
 User=prometheus
 Group=prometheus
 Restart=always
 ExecReload=/bin/kill -HUP $MAINPID
 ExecStart=/usr/bin/prometheus \
   --config.file=/etc/prometheus/prometheus.yml \
-  --storage.tsdb.path=/var/lib/prometheus/
+  --storage.tsdb.path=/var/lib/prometheus/ \
+  ${ARGS}
 
 [Install]
 WantedBy=multi-user.target

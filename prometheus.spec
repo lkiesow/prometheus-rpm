@@ -8,11 +8,12 @@
 Name:          prometheus
 Summary:       Prometheus systems monitoring and alerting toolkit
 Version:       2.21.0
-Release:       2%{?dist}
+Release:       3%{?dist}
 License:       ASL 2.0
 
 Source0:       https://github.com/prometheus/prometheus/releases/download/v%{version}/prometheus-%{version}.linux-amd64.tar.gz
 Source1:       https://raw.githubusercontent.com/lkiesow/prometheus-rpm/master/prometheus.service
+Source2:       https://raw.githubusercontent.com/lkiesow/prometheus-rpm/master/environment
 URL:           https://prometheus.io/
 BuildRoot:     %{_tmppath}/%{name}-root
 
@@ -49,6 +50,11 @@ install -p -D -m 0755 promtool %{buildroot}%{_bindir}/promtool
 install -p -D -m 0644 \
    %{SOURCE1} \
    %{buildroot}%{_unitdir}/%{name}.service
+
+# install systemd environment file
+install -p -D -m 0644 \
+   %{SOURCE2} \
+   %{buildroot}%{_sysconfdir}/default/%{name}
 
 # install configuration
 install -p -D -m 0644 \
@@ -96,6 +102,7 @@ fi
 %defattr(-,root,root,-)
 %{_bindir}/*
 %config(noreplace) %{_sysconfdir}/%{name}
+%config(noreplace) %{_sysconfdir}/default/%{name}
 %{_unitdir}/%{name}.service
 %attr(755,%{uid},%{gid}) %dir %{_sharedstatedir}/%{name}
 %license LICENSE
@@ -103,6 +110,9 @@ fi
 
 
 %changelog
+* Mon Oct 12 2020 Lars Kiesow <lkiesow@uos.de> - 2.21.0-3
+- By default, listen to 127.0.0.1 only
+
 * Mon Oct 12 2020 Lars Kiesow <lkiesow@uos.de> - 2.21.0-2
 - Removed tsdb binary
 
