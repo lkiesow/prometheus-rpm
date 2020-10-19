@@ -7,8 +7,8 @@
 
 Name:          prometheus
 Summary:       Prometheus systems monitoring and alerting toolkit
-Version:       2.21.0
-Release:       3%{?dist}
+Version:       2.22.0
+Release:       1%{?dist}
 License:       ASL 2.0
 
 Source0:       https://github.com/prometheus/prometheus/releases/download/v%{version}/prometheus-%{version}.linux-amd64.tar.gz
@@ -110,6 +110,9 @@ fi
 
 
 %changelog
+* Mon Oct 19 2020 Lars Kiesow <lkiesow@uos.de> - 2.22.0-1
+- Update to 2.22.0
+
 * Mon Oct 12 2020 Lars Kiesow <lkiesow@uos.de> - 2.21.0-3
 - By default, listen to 127.0.0.1 only
 
