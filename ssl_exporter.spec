@@ -28,7 +28,7 @@ Exports Prometheus metrics for SSL certificates
 
 
 %prep
-%setup -q
+%setup -c
 
 %build
 
@@ -89,7 +89,7 @@ fi
 %config(noreplace) %{_sysconfdir}/default/%{name}
 %{_unitdir}/%{name}.service
 %license LICENSE
-%doc NOTICE
+%doc README.md
 
 
 %changelog
