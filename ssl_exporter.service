@@ -1,0 +1,13 @@
+[Unit]
+Description=SSL Certificate Exporter
+After=network-online.target
+
+[Service]
+EnvironmentFile=/etc/default/ssl_exporter
+User=sslexporter
+Group=sslexporter
+Restart=always
+ExecStart=/usr/bin/ssl_exporter ${ARGS}
+
+[Install]
+WantedBy=multi-user.target
