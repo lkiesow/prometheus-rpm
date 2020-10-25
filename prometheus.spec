@@ -8,12 +8,12 @@
 Name:          prometheus
 Summary:       Prometheus systems monitoring and alerting toolkit
 Version:       2.22.0
-Release:       1%{?dist}
+Release:       2%{?dist}
 License:       ASL 2.0
 
 Source0:       https://github.com/prometheus/prometheus/releases/download/v%{version}/prometheus-%{version}.linux-amd64.tar.gz
 Source1:       https://raw.githubusercontent.com/lkiesow/prometheus-rpm/master/prometheus.service
-Source2:       https://raw.githubusercontent.com/lkiesow/prometheus-rpm/master/environment
+Source2:       https://raw.githubusercontent.com/lkiesow/prometheus-rpm/master/prometheus.env
 URL:           https://prometheus.io/
 BuildRoot:     %{_tmppath}/%{name}-root
 
@@ -79,23 +79,23 @@ if [ ! $(getent group %{gid}) ]; then
 fi
 if [ ! $(getent passwd %{uid}) ]; then
    if [ ! $(getent passwd %{nuid}) ]; then
-      useradd -M -r -u %{nuid} -d %{_sharedstatedir}/minio -g %{gid} %{uid} > /dev/null 2>&1 || :
+      useradd -M -r -u %{nuid} -g %{gid} %{uid} > /dev/null 2>&1 || :
    else
-      useradd -M -r -d %{_sharedstatedir}/minio -g %{gid} %{uid} > /dev/null 2>&1 || :
+      useradd -M -r -g %{gid} %{uid} > /dev/null 2>&1 || :
    fi
 fi
 
 
 %post
-%systemd_post minio.service
+%systemd_post %{name}.service
 
 
 %preun
-%systemd_preun minio.service
+%systemd_preun %{name}.service
 
 
 %postun
-%systemd_postun_with_restart minio.service
+%systemd_postun_with_restart %{name}.service
 
 
 %files
@@ -110,6 +110,9 @@ fi
 
 
 %changelog
+* Sun Oct 25 2020 Lars Kiesow <lkiesow@uos.de> - 2.22.0-2
+- Fix systemd actions
+
 * Mon Oct 19 2020 Lars Kiesow <lkiesow@uos.de> - 2.22.0-1
 - Update to 2.22.0
 
