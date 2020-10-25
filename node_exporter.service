@@ -1,0 +1,14 @@
+[Unit]
+Description=Node exporter
+After=network-online.target
+
+[Service]
+EnvironmentFile=/etc/default/node_exporter
+User=nodeexporter
+Group=nodeexporter
+Restart=always
+ExecReload=/bin/kill -HUP $MAINPID
+ExecStart=/usr/bin/node_exporter ${ARGS}
+
+[Install]
+WantedBy=multi-user.target
