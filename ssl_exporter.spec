@@ -8,12 +8,13 @@
 Name:          ssl_exporter
 Summary:       SSL Certificate Exporter
 Version:       2.1.1
-Release:       1%{?dist}
+Release:       2%{?dist}
 License:       ASL 2.0
 
 Source0:       https://github.com/ribbybibby/ssl_exporter/releases/download/v%{version}/%{name}_%{version}_linux_amd64.tar.gz
 Source1:       https://raw.githubusercontent.com/lkiesow/prometheus-rpm/master/%{name}.service
 Source2:       https://raw.githubusercontent.com/lkiesow/prometheus-rpm/master/%{name}.env
+Source3:       https://raw.githubusercontent.com/ribbybibby/ssl_exporter/v%{version}/examples/%{name}.yaml
 URL:           https://github.com/ribbybibby/ssl_exporter
 BuildRoot:     %{_tmppath}/%{name}-root
 
@@ -35,6 +36,8 @@ Exports Prometheus metrics for SSL certificates
 %install
 rm -rf %{buildroot}
 
+install -p -d -m 0755 %{buildroot}%{_sysconfdir}/%{name}
+
 # install binary
 install -p -D -m 0755 %{name} %{buildroot}%{_bindir}/%{name}
 
@@ -47,6 +50,11 @@ install -p -D -m 0644 \
 install -p -D -m 0644 \
    %{SOURCE2} \
    %{buildroot}%{_sysconfdir}/default/%{name}
+
+# install configuration
+install -p -D -m 0644 \
+   %{SOURCE3} \
+   %{buildroot}%{_sysconfdir}/%{name}/%{name}.yml
 
 %clean
 rm -rf %{buildroot}
@@ -86,6 +94,7 @@ fi
 %files
 %defattr(-,root,root,-)
 %{_bindir}/%{name}
+%config(noreplace) %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/default/%{name}
 %{_unitdir}/%{name}.service
 %license LICENSE
@@ -93,5 +102,8 @@ fi
 
 
 %changelog
+* Mon Oct 26 2020 Lars Kiesow <lkiesow@uos.de> - 2.1.1-2
+- Uppded default configuration file
+
 * Sun Oct 25 2020 Lars Kiesow <lkiesow@uos.de> - 2.1.1-1
 - Initial build
