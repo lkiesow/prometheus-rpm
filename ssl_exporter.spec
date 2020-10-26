@@ -8,7 +8,7 @@
 Name:          ssl_exporter
 Summary:       SSL Certificate Exporter
 Version:       2.1.1
-Release:       3%{?dist}
+Release:       4%{?dist}
 License:       ASL 2.0
 
 Source0:       https://github.com/ribbybibby/ssl_exporter/releases/download/v%{version}/%{name}_%{version}_linux_amd64.tar.gz
