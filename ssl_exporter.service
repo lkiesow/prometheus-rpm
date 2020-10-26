@@ -7,7 +7,13 @@ EnvironmentFile=/etc/default/ssl_exporter
 User=sslexporter
 Group=sslexporter
 Restart=always
-ExecStart=/usr/bin/ssl_exporter ${ARGS}
+ExecStart=/usr/bin/ssl_exporter \
+	${LISTEN_ADDRESS} \
+	${CONFIG_FILE} \
+	${METRICS_PATH} \
+	${PROBE_PATH} \
+	${LOG_LEVEL} \
+	${LOG_FORMAT}
 
 [Install]
 WantedBy=multi-user.target
