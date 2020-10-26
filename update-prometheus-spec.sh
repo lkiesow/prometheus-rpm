@@ -30,5 +30,5 @@ if [ "$LATEST" != "$PKG" ]; then
 	sed -i "s/^Version: .*/Version:       ${LATEST}/" prometheus.spec
 	sed -i "s/^%changelog/%changelog\n\* ${DATE} ${USER} - ${LATEST}-${RELEASE}\n- Update to ${LATEST}\n/" prometheus.spec
 
-	git commit prometheus.spec -m "Update to ${LATEST}"
+	git commit prometheus.spec -m "Update prometheus to ${LATEST}"
 fi
