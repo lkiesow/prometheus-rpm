@@ -7,7 +7,8 @@ EnvironmentFile=/etc/default/alertmanager
 User=alertmanager
 Group=alertmanager
 Restart=always
-ExecStart=/usr/bin/prometheus \
+ExecReload=/bin/kill -HUP $MAINPID
+ExecStart=/usr/bin/alertmanager \
   --config.file=/etc/alertmanager/alertmanager.yml \
   --storage.path=/var/lib/alertmanager/ \
   ${ARGS}

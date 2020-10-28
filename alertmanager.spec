@@ -6,9 +6,9 @@
 %define  ngid  7972
 
 Name:          alertmanager
-Summary:        Prometheus Alertmanager
+Summary:       Prometheus Alertmanager
 Version:       0.21.0
-Release:       1%{?dist}
+Release:       2%{?dist}
 License:       ASL 2.0
 
 Source0:       https://github.com/prometheus/alertmanager/releases/download/v%{version}/alertmanager-%{version}.linux-amd64.tar.gz
@@ -107,5 +107,8 @@ fi
 
 
 %changelog
+* Thu Oct 29 2020 Lars Kiesow <lkiesow@uos.de> - 0.21.0-2
+- Fixed service file
+
 * Sun Oct 25 2020 Lars Kiesow <lkiesow@uos.de> - 0.21.0-1
 - Initial build
