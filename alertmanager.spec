@@ -8,12 +8,12 @@
 Name:          alertmanager
 Summary:       Prometheus Alertmanager
 Version:       0.21.0
-Release:       2%{?dist}
+Release:       3%{?dist}
 License:       ASL 2.0
 
-Source0:       https://github.com/prometheus/alertmanager/releases/download/v%{version}/alertmanager-%{version}.linux-amd64.tar.gz
-Source1:       https://raw.githubusercontent.com/lkiesow/prometheus-rpm/master/prometheus.service
-Source2:       https://raw.githubusercontent.com/lkiesow/prometheus-rpm/master/prometheus.env
+Source0:       https://github.com/prometheus/alertmanager/releases/download/v%{version}/%{name}-%{version}.linux-amd64.tar.gz
+Source1:       https://raw.githubusercontent.com/lkiesow/prometheus-rpm/master/%{name}.service
+Source2:       https://raw.githubusercontent.com/lkiesow/prometheus-rpm/master/%{name}.env
 URL:           https://prometheus.io/
 BuildRoot:     %{_tmppath}/%{name}-root
 
@@ -107,6 +107,9 @@ fi
 
 
 %changelog
+* Thu Oct 29 2020 Lars Kiesow <lkiesow@uos.de> - 0.21.0-3
+- Fixed source references
+
 * Thu Oct 29 2020 Lars Kiesow <lkiesow@uos.de> - 0.21.0-2
 - Fixed service file
 
