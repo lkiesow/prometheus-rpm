@@ -8,7 +8,7 @@
 Name:          alertmanager
 Summary:       Prometheus Alertmanager
 Version:       0.21.0
-Release:       3%{?dist}
+Release:       4%{?dist}
 License:       ASL 2.0
 
 Source0:       https://github.com/prometheus/alertmanager/releases/download/v%{version}/%{name}-%{version}.linux-amd64.tar.gz
@@ -107,6 +107,9 @@ fi
 
 
 %changelog
+* Sun Nov 01 2020 Lars Kiesow <lkiesow@uos.de> - 0.21.0-4
+- Allow setting additional parameters
+
 * Thu Oct 29 2020 Lars Kiesow <lkiesow@uos.de> - 0.21.0-3
 - Fixed source references
 

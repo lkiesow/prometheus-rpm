@@ -8,10 +8,10 @@ User=alertmanager
 Group=alertmanager
 Restart=always
 ExecReload=/bin/kill -HUP $MAINPID
-ExecStart=/usr/bin/alertmanager \
+ExecStart=/bin/sh -c 'exec /usr/bin/alertmanager  \
   --config.file=/etc/alertmanager/alertmanager.yml \
   --storage.path=/var/lib/alertmanager/ \
-  ${ARGS}
+  ${ARGS}'
 
 [Install]
 WantedBy=multi-user.target
