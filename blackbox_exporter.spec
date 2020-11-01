@@ -53,8 +53,8 @@ install -p -D -m 0644 \
 
 # install configuration
 install -p -D -m 0644 \
-   %{name}.yml \
-   %{buildroot}%{_sysconfdir}/%{name}/%{name}.yml
+   blackbox.yml \
+   %{buildroot}%{_sysconfdir}/%{name}/blackbox.yml
 
 %clean
 rm -rf %{buildroot}

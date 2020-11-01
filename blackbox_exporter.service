@@ -8,7 +8,9 @@ User=blackboxexporter
 Group=blackboxexporter
 Restart=always
 ExecReload=/bin/kill -HUP $MAINPID
-ExecStart=/bin/sh -c 'exec /usr/bin/blackbox_exporter ${ARGS}'
+ExecStart=/bin/sh -c 'exec /usr/bin/blackbox_exporter \
+  --config.file=/etc/blackbox_exporter/blackbox.yml \
+  ${ARGS}'
 
 [Install]
 WantedBy=multi-user.target
