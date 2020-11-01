@@ -8,7 +8,7 @@
 Name:          ssl_exporter
 Summary:       SSL Certificate Exporter
 Version:       2.1.1
-Release:       4%{?dist}
+Release:       5%{?dist}
 License:       ASL 2.0
 
 Source0:       https://github.com/ribbybibby/ssl_exporter/releases/download/v%{version}/%{name}_%{version}_linux_amd64.tar.gz
@@ -102,6 +102,9 @@ fi
 
 
 %changelog
+* Sun Nov 01 2020 Lars Kiesow <lkiesow@uos.de> - 2.1.1-5
+- Better support configuring different arguments
+
 * Mon Oct 26 2020 Lars Kiesow <lkiesow@uos.de> - 2.1.1-3
 - Fix configuration
 

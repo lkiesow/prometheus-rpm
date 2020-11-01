@@ -7,13 +7,9 @@ EnvironmentFile=/etc/default/ssl_exporter
 User=sslexporter
 Group=sslexporter
 Restart=always
-ExecStart=/usr/bin/ssl_exporter \
-	${LISTEN_ADDRESS} \
-	${CONFIG_FILE} \
-	${METRICS_PATH} \
-	${PROBE_PATH} \
-	${LOG_LEVEL} \
-	${LOG_FORMAT}
+ExecStart=/bin/sh -c 'exec /usr/bin/ssl_exporter \
+  --config.file=/etc/ssl_exporter/ssl_exporter.yml \
+  ${ARGS}'
 
 [Install]
 WantedBy=multi-user.target
