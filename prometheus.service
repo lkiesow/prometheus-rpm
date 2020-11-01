@@ -8,10 +8,10 @@ User=prometheus
 Group=prometheus
 Restart=always
 ExecReload=/bin/kill -HUP $MAINPID
-ExecStart=/usr/bin/prometheus \
+ExecStart=/bin/sh -c 'exec /usr/bin/prometheus \
   --config.file=/etc/prometheus/prometheus.yml \
   --storage.tsdb.path=/var/lib/prometheus/ \
-  ${ARGS}
+  ${ARGS}'
 
 [Install]
 WantedBy=multi-user.target

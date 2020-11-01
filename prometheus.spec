@@ -8,7 +8,7 @@
 Name:          prometheus
 Summary:       Prometheus systems monitoring and alerting toolkit
 Version:       2.22.0
-Release:       2%{?dist}
+Release:       3%{?dist}
 License:       ASL 2.0
 
 Source0:       https://github.com/prometheus/prometheus/releases/download/v%{version}/prometheus-%{version}.linux-amd64.tar.gz
@@ -110,6 +110,9 @@ fi
 
 
 %changelog
+* Sun Nov 01 2020 Lars Kiesow <lkiesow@uos.de> - 2.22.0-3
+- Allow setting additional parameters
+
 * Sun Oct 25 2020 Lars Kiesow <lkiesow@uos.de> - 2.22.0-2
 - Fix systemd actions
 
