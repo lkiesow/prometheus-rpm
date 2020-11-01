@@ -1,0 +1,14 @@
+[Unit]
+Description=Blackbox exporter
+After=network-online.target
+
+[Service]
+EnvironmentFile=/etc/default/blackbox_exporter
+User=blackboxexporter
+Group=blackboxexporter
+Restart=always
+ExecReload=/bin/kill -HUP $MAINPID
+ExecStart=/bin/sh -c 'exec /usr/bin/blackbox_exporter ${ARGS}'
+
+[Install]
+WantedBy=multi-user.target
