@@ -8,7 +8,7 @@ User=nodeexporter
 Group=nodeexporter
 Restart=always
 ExecReload=/bin/kill -HUP $MAINPID
-ExecStart=/usr/bin/node_exporter ${ARGS}
+ExecStart=/bin/sh -c 'exec /usr/bin/node_exporter ${ARGS}'
 
 [Install]
 WantedBy=multi-user.target
