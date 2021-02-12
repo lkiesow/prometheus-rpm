@@ -7,7 +7,7 @@
 
 Name:          ssl_exporter
 Summary:       SSL Certificate Exporter
-Version:       2.1.1
+Version:       2.2.0
 Release:       5%{?dist}
 License:       ASL 2.0
 
@@ -102,6 +102,9 @@ fi
 
 
 %changelog
+* Fri Feb 12 2021 Lars Kiesow <lkiesow@uos.de> - 2.2.0-5
+- Update to 2.2.0
+
 * Sun Nov 01 2020 Lars Kiesow <lkiesow@uos.de> - 2.1.1-5
 - Better support configuring different arguments
 
