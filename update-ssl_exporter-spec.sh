@@ -30,5 +30,5 @@ if [ "$LATEST" != "$PKG" ]; then
 	sed -i "s/^Version: .*/Version:       ${LATEST}/" ssl_exporter.spec
 	sed -i "s/^%changelog/%changelog\n\* ${DATE} ${USER} - ${LATEST}-${RELEASE}\n- Update to ${LATEST}\n/" ssl_exporter.spec
 
-	#git commit ssl_exporter.spec -m "Update ssl_exporter to ${LATEST}"
+	git commit ssl_exporter.spec -m "Update ssl_exporter to ${LATEST}"
 fi
