@@ -30,7 +30,7 @@ using Prometheus.
 
 
 %prep
-%setup -q -n %{name}-%{version}.linux-amd64
+%setup -c
 
 %build
 
