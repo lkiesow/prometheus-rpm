@@ -1,0 +1,13 @@
+[Unit]
+Description=NGINX Prometheus Exporter
+After=network-online.target
+
+[Service]
+EnvironmentFile=/etc/default/nginx-prometheus-exporter
+User=nginxexporter
+Group=nginxexporter
+Restart=always
+ExecStart=/bin/sh -c 'exec /usr/bin/nginx-prometheus-exporter ${ARGS}'
+
+[Install]
+WantedBy=multi-user.target
