@@ -8,7 +8,7 @@
 Name:          nginx-prometheus-exporter
 Summary:       NGINX Prometheus Exporter
 Version:       0.8.0
-Release:       1%{?dist}
+Release:       2%{?dist}
 License:       ASL 2.0
 
 Source0:       https://github.com/nginxinc/nginx-prometheus-exporter/releases/download/v%{version}/nginx-prometheus-exporter-%{version}-linux-amd64.tar.gz
@@ -97,5 +97,8 @@ fi
 
 
 %changelog
+* Sun Mar 14 2021 Lars Kiesow <lkiesow@uos.de> - 0.8.0-2
+- Fixed service file and configuration
+
 * Sun Mar 14 2021 Lars Kiesow <lkiesow@uos.de> - 0.8.0-1
 - Initial build
