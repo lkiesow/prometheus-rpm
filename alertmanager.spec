@@ -7,7 +7,7 @@
 
 Name:          alertmanager
 Summary:       Prometheus Alertmanager
-Version:       0.22.1
+Version:       0.22.2
 Release:       4%{?dist}
 License:       ASL 2.0
 
@@ -107,6 +107,9 @@ fi
 
 
 %changelog
+* Thu Jun 03 2021 Lars Kiesow <lkiesow@uos.de> - 0.22.2-4
+- Update to 0.22.2
+
 * Fri May 28 2021 Lars Kiesow <lkiesow@uos.de> - 0.22.1-4
 - Update to 0.22.1
 
