@@ -8,7 +8,7 @@
 Name:          blackbox_exporter
 Summary:       Blackbox exporter
 Version:       0.19.0
-Release:       1%{?dist}
+Release:       2%{?dist}
 License:       ASL 2.0
 
 Source0:       https://github.com/prometheus/%{name}/releases/download/v%{version}/%{name}-%{version}.linux-amd64.tar.gz
@@ -102,6 +102,9 @@ fi
 
 
 %changelog
+* Thu Jun 24 2021 Lars Kiesow <lkiesow@uos.de> - 0.19.0-2
+- Fixed port
+
 * Tue May 11 2021 Lars Kiesow <lkiesow@uos.de> - 0.19.0-1
 - Update to 0.19.0
 
