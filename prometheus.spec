@@ -7,7 +7,7 @@
 
 Name:          prometheus
 Summary:       Prometheus systems monitoring and alerting toolkit
-Version:       2.31.1
+Version:       2.32.0
 Release:       3%{?dist}
 License:       ASL 2.0
 
@@ -110,6 +110,9 @@ fi
 
 
 %changelog
+* Wed Dec 15 2021 Lars Kiesow <lkiesow@uos.de> - 2.32.0-3
+- Update to 2.32.0
+
 * Sat Nov 06 2021 Lars Kiesow <lkiesow@uos.de> - 2.31.1-3
 - Update to 2.31.1
 
