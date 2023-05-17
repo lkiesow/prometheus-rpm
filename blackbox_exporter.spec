@@ -7,7 +7,7 @@
 
 Name:          blackbox_exporter
 Summary:       Blackbox exporter
-Version:       0.23.0
+Version:       0.24.0
 Release:       2%{?dist}
 License:       ASL 2.0
 
@@ -102,6 +102,9 @@ fi
 
 
 %changelog
+* Wed May 17 2023 Lars Kiesow <lkiesow@uos.de> - 0.24.0-2
+- Update to 0.24.0
+
 * Sat Dec 03 2022 Lars Kiesow <lkiesow@uos.de> - 0.23.0-2
 - Update to 0.23.0
 
