@@ -7,7 +7,7 @@
 
 Name:          node_exporter
 Summary:       Node exporter for Prometheus
-Version:       1.6.1
+Version:       1.7.0
 Release:       2%{?dist}
 License:       ASL 2.0
 
@@ -94,6 +94,9 @@ fi
 
 
 %changelog
+* Tue Nov 14 2023 Lars Kiesow <lkiesow@uos.de> - 1.7.0-2
+- Update to 1.7.0
+
 * Tue Jul 18 2023 Lars Kiesow <lkiesow@uos.de> - 1.6.1-2
 - Update to 1.6.1
 
