@@ -1,0 +1,86 @@
+%define debug_package %{nil}
+
+%define  uid   matrixalert
+
+Name:          matrix-alertmanager-receiver
+Summary:       Send Alertmanager alerts to Matrix rooms
+Version:       2024.7.3
+Release:       1%{?dist}
+License:       GPL-3+
+
+Source0:       https://github.com/metio/%{name}/releases/download/%{version}/%{name}_%{version}_linux_amd64.tar.gz
+Source1:       https://raw.githubusercontent.com/lkiesow/prometheus-rpm/master/%{name}.service
+Source2:       https://raw.githubusercontent.com/metio/%{name}/%{version}/config.sample.yaml
+Source3:       https://raw.githubusercontent.com/metio/%{name}/%{version}/LICENSE
+URL:           https://github.com/metio/matrix-alertmanager-receiver
+BuildRoot:     %{_tmppath}/%{name}-root
+
+BuildRequires:     systemd
+Requires(post):    systemd
+Requires(preun):   systemd
+Requires(postun):  systemd
+
+
+%description
+Alertmanager client that forwards alerts to a Matrix room.
+
+
+%prep
+%setup -c
+
+%build
+
+%install
+rm -rf %{buildroot}
+
+# install binary
+# binary name is s.th. like matrix-alertmanager-receiver_v2024.7.3
+install -p -D -m 0755 %{name}_v%{version} %{buildroot}%{_bindir}/%{name}
+
+# install unit file
+install -p -D -m 0644 \
+   %{SOURCE1} \
+   %{buildroot}%{_unitdir}/%{name}.service
+
+# install configuration file
+install -p -D -m 0644 \
+   %{SOURCE2} \
+   %{buildroot}%{_sysconfdir}/%{name}.yml
+
+# license
+cp %{SOURCE3} .
+
+%clean
+rm -rf %{buildroot}
+
+
+%pre
+# Create user if nonexistent
+if [ ! $(getent passwd %{uid}) ]; then
+	useradd --system %{uid} > /dev/null 2>&1 || :
+fi
+
+
+%post
+%systemd_post %{name}.service
+
+
+%preun
+%systemd_preun %{name}.service
+
+
+%postun
+%systemd_postun_with_restart %{name}.service
+
+
+%files
+%defattr(-,root,root,-)
+%{_bindir}/%{name}
+%config(noreplace) %{_sysconfdir}/%{name}.yml
+%{_unitdir}/%{name}.service
+%license LICENSE
+
+
+%changelog
+* Fri Aug  2 2024 Lars Kiesow <lkiesow@uos.de> - 2024.7.3-1
+- Initial build

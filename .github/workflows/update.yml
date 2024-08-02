@@ -39,6 +39,7 @@ jobs:
         cd ~/prometheus-rpm-clone
         ./update-alertmanager-spec.sh
         ./update-blackbox_exporter-spec.sh
+        ./update-matrix-alertmanager-receiver-spec.sh
         ./update-node_exporter-spec.sh
         ./update-prometheus-spec.sh
         ./update-ssl_exporter-spec.sh
