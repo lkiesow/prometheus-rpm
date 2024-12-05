@@ -7,7 +7,7 @@
 
 Name:          nginx-prometheus-exporter
 Summary:       NGINX Prometheus Exporter
-Version:       1.3.0
+Version:       1.4.0
 Release:       2%{?dist}
 License:       ASL 2.0
 
@@ -97,6 +97,9 @@ fi
 
 
 %changelog
+* Thu Dec 05 2024 Lars Kiesow <lkiesow@uos.de> - 1.4.0-2
+- Update to 1.4.0
+
 * Sat Aug 03 2024 Lars Kiesow <lkiesow@uos.de> - 1.3.0-2
 - Update to 1.3.0
 
