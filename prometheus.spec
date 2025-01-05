@@ -2,13 +2,11 @@
 
 %define  uid   prometheus
 %define  gid   prometheus
-%define  nuid  7970
-%define  ngid  7970
 
 Name:          prometheus
 Summary:       Prometheus systems monitoring and alerting toolkit
 Version:       3.1.0
-Release:       3%{?dist}
+Release:       4%{?dist}
 License:       ASL 2.0
 
 Source0:       https://github.com/prometheus/prometheus/releases/download/v%{version}/prometheus-%{version}.linux-amd64.tar.gz
@@ -39,9 +37,6 @@ rm -rf %{buildroot}
 install -p -d -m 0755 %{buildroot}%{_sysconfdir}/%{name}
 install -p -d -m 0755 %{buildroot}%{_sharedstatedir}/%{name}
 
-# Maybe for console templates?
-#install -p -d -m 0755 %{buildroot}%{_sharedstatedir}/%{name}
-
 # install binary
 install -p -D -m 0755 prometheus %{buildroot}%{_bindir}/prometheus
 install -p -D -m 0755 promtool %{buildroot}%{_bindir}/promtool
@@ -60,8 +55,6 @@ install -p -D -m 0644 \
 install -p -D -m 0644 \
    prometheus.yml \
    %{buildroot}%{_sysconfdir}/%{name}/prometheus.yml
-cp -r consoles console_libraries \
-   %{buildroot}%{_sysconfdir}/%{name}/
 
 %clean
 rm -rf %{buildroot}
@@ -69,20 +62,8 @@ rm -rf %{buildroot}
 
 %pre
 # Create user and group if nonexistent
-# Try using a common numeric uid/gid if possible
-if [ ! $(getent group %{gid}) ]; then
-   if [ ! $(getent group %{ngid}) ]; then
-      groupadd -r -g %{ngid} %{gid} > /dev/null 2>&1 || :
-   else
-      groupadd -r %{gid} > /dev/null 2>&1 || :
-   fi
-fi
 if [ ! $(getent passwd %{uid}) ]; then
-   if [ ! $(getent passwd %{nuid}) ]; then
-      useradd -M -r -u %{nuid} -g %{gid} %{uid} > /dev/null 2>&1 || :
-   else
-      useradd -M -r -g %{gid} %{uid} > /dev/null 2>&1 || :
-   fi
+   useradd -M -r -g %{gid} %{uid} > /dev/null 2>&1 || :
 fi
 
 
@@ -110,6 +91,9 @@ fi
 
 
 %changelog
+* Sun Jan 05 2025 Lars Kiesow <lkiesow@uos.de> - 3.1.0-4
+- Fix build (console files no longer exist)
+
 * Fri Jan 03 2025 Lars Kiesow <lkiesow@uos.de> - 3.1.0-3
 - Update to 3.1.0
 
