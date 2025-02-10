@@ -4,7 +4,7 @@
 
 Name:          matrix-alertmanager-receiver
 Summary:       Send Alertmanager alerts to Matrix rooms
-Version:       2024.12.18
+Version:       2025.2.9
 Release:       1%{?dist}
 License:       GPL-3+
 
@@ -82,6 +82,9 @@ fi
 
 
 %changelog
+* Mon Feb 10 2025 Lars Kiesow <lkiesow@uos.de> - 2025.2.9-1
+- Update to 2025.2.9
+
 * Thu Dec 19 2024 Lars Kiesow <lkiesow@uos.de> - 2024.12.18-1
 - Update to 2024.12.18
 
